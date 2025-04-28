@@ -1,0 +1,13 @@
+discord==2.3.2
+requests==2.31.0
+asyncio==3.4.3
+langdetect==1.0.9
+emoji==2.10.1
+colorama==0.4.6
+aiohttp==3.9.5
+google-generativeai==0.7.2
+langdetect==1.0.9
+python-dotenv==1.0.1
+colorama==0.4.6
+python-dateutil==2.9.0.post0
+websockets==12.0

@@ -1,0 +1,7 @@
+Name: YourName
+Age: 20
+Hobby: Gaming
+Where I live: New York
+Occupation: Student
+Favorite Thing: Pizza
+Bio: Just a chill dude who loves memes and tech.
