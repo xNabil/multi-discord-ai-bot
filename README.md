@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-# discord-ai-bot
-Discord Gemini Chat Bot is a Python-based self-bot that uses Gemini AI to automate responses, handle mentions, and engage in conversations on Discord. Ideal for leveling up in servers, participating in airdrops, and enhancing server activity. Fully customizable and built for educational and automation purposes.
-=======
 # Discord Gemini Chat Bot
 
-> **A self-bot that brings Gemini AI’s conversational power to Discord.**  
-> _Crafted for natural, Gen Z-style, multilingual interactions — with memory, mood, and complete configurability._
+A simple Discord self-bot that uses **Gemini AI** to automatically reply, handle mentions, and engage in conversations. Great for automating tasks like leveling up in servers for **airdrops** and participating in events that require activity.
 
 ---
 
@@ -13,19 +8,6 @@ Discord Gemini Chat Bot is a Python-based self-bot that uses Gemini AI to automa
 **Discord Gemini Chat Bot** is a **Python-based auto bot** designed to work as a **Discord self-bot**. It leverages **Gemini AI** for natural, **conversational interactions**, making your Discord server more engaging and interactive. The bot automatically replies to messages, mentions, and conversations, **personalizing responses** with different moods and languages.
 
 ⚡ _Ideal for automating Discord interactions, creating a self-bot for fun, or using it for specific tasks like leveling up in servers for **airdrops** or participating in events that require activity on platforms like **Mee6 bot**._
-
-### Use Case: Level Up for Airdrops
-One of the common use cases for this bot is **leveling up in Discord servers**. Many **airdrops** or events require users to gain levels or activity in certain Discord servers. By using the **Mee6 bot** or similar bots that track activity, you can **automatically generate messages** and **interact in channels**, helping you level up faster without manual input.
-
-With the **Gemini AI-powered responses**, the bot can interact naturally in servers, completing tasks such as:
-- Participating in chat and events.
-- Responding to messages or mentions.
-- Completing simple tasks that would otherwise require manual input.
-
-This makes the **Discord Gemini Chat Bot** a powerful tool for automating your Discord experience and enhancing your **airdrops strategy** or **server activities**.
-
----
-
 
 ## 🚀 Features
 - **AI-Driven Responses**: Converses using Gemini AI with natural, context-aware replies.
@@ -38,6 +20,18 @@ This makes the **Discord Gemini Chat Bot** a powerful tool for automating your D
 - **Rate Limiting Handling**: Smart retry system for Discord and Gemini API limits.
 
 ---
+### Use Case: Level Up for Airdrops
+One of the common use cases for this bot is **leveling up in Discord servers**. Many **airdrops** or events require users to gain levels or activity in certain Discord servers. By using the **Mee6 bot** or similar bots that track activity, you can **automatically generate messages** and **interact in channels**, helping you level up faster without manual input.
+
+With the **Gemini AI-powered responses**, the bot can interact naturally in servers, completing tasks such as:
+- Participating in chat and events.
+- Responding to messages or mentions.
+- Completing simple tasks that would otherwise require manual input.
+
+This makes the **Discord Gemini Chat Bot** a powerful tool for automating your Discord experience and enhancing your **airdrops strategy** or **server activities**.
+
+---
+
 
 ## 🛠️ Tech Stack
 - **Python 3.8+**
@@ -80,9 +74,9 @@ This makes the **Discord Gemini Chat Bot** a powerful tool for automating your D
  open Developer Tools or inspect element 
  switch to the **Console** tab and paste the Commands blow 
  
-     ```js
+     
      allow pasting
-     ```  
+      
    - **Then paste** the following snippet and hit **Enter**:
      ```js
      (
@@ -106,13 +100,25 @@ This makes the **Discord Gemini Chat Bot** a powerful tool for automating your D
 6. Copy and **keep it secure** — never share it publicly.
 
 ---
+## 🔑 How to Get Your Discord Channel ID
+
+To get the **Channel ID**, follow these steps:
+you can get the Channel ID directly from the URL of the channel:
+
+1. Go to the channel in your browser.
+2. Copy the **Channel ID** from the URL. It’s the second part of the URL after `/channels/`.
+   - Example URL: `https://discord.com/channels/948033443483254845/1027161980970205225`
+   - **Channel ID**: `1027161980970205225`
+
+Copy the **Channel ID** and paste it into your `.env` file or wherever you need it in your bot configuration.
+
 
 ## 🧰 Installation
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/xNabil/discord-gemini-bot.git
-   cd discord-gemini-bot
+   git clone https://github.com/xNabil/discord-ai-bot.git
+   cd discord-ai-bot
    ```
 
 2. **Install Dependencies**
@@ -163,4 +169,3 @@ This project is licensed under the **MIT License** — free for personal use and
 > Use with caution.”**
 
 ---
->>>>>>> 47ad366 (Initial commit)
