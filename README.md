@@ -148,6 +148,15 @@ This makes the **Discord Gemini Chat Bot** a powerful tool for automating your D
 
 ---
 
+## Donate 💸
+Love the bot? Wanna fuel more WAGMI vibes? Drop some crypto love to keep the charts lit! 🙌
+- **SUI**: `0x8ffde56ce74ddd5fe0095edbabb054a63f33c807fa4f6d5dc982e30133c239e8`
+- **USDT (TRC20)**: `TG8JGN59e8iqF3XzcD26WPL8Zd1R5So7hm`
+- **BNB (BEP20)**: `0xe6bf8386077c04a9cc05aca44ee0fc2fe553eff1`
+- **Binance UID**:`921100473`
+
+Every bit helps me grind harder and keep this bot stacking bags! 😎
+
 ## ❤️ A Final Note
 
 > **“Built for fun. Built for learning.  
