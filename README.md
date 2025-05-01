@@ -134,15 +134,6 @@ With the **Gemini AI-powered responses**, the bot can interact naturally in serv
 
 This makes the **Discord Gemini Chat Bot** a powerful tool for automating your Discord experience and enhancing your **airdrops strategy** or **server activities**.
 
----
-
-
-## 🛠️ Tech Stack
-- **Python 3.8+**
-- **Discord.py (Self-Bot Mode)**
-- **Gemini AI (Google AI Studio API)**
-
----
 
 ## 📦 Prerequisites
 - [Python 3.8+](https://www.python.org/downloads/)
