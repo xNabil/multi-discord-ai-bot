@@ -20,33 +20,6 @@ A simple Discord self-bot that uses **Gemini AI** to automatically reply, handle
 - **Rate Limiting Handling**: Smart retry system for Discord and Gemini API limits.
 
 ---
-### Use Case: Level Up for Airdrops
-One of the common use cases for this bot is **leveling up in Discord servers**. Many **airdrops** or events require users to gain levels or activity in certain Discord servers. By using the **Mee6 bot** or similar bots that track activity, you can **automatically generate messages** and **interact in channels**, helping you level up faster without manual input.
-
-With the **Gemini AI-powered responses**, the bot can interact naturally in servers, completing tasks such as:
-- Participating in chat and events.
-- Responding to messages or mentions.
-- Completing simple tasks that would otherwise require manual input.
-
-This makes the **Discord Gemini Chat Bot** a powerful tool for automating your Discord experience and enhancing your **airdrops strategy** or **server activities**.
-
----
-
-
-## 🛠️ Tech Stack
-- **Python 3.8+**
-- **Discord.py (Self-Bot Mode)**
-- **Gemini AI (Google AI Studio API)**
-
----
-
-## 📦 Prerequisites
-- [Python 3.8+](https://www.python.org/downloads/)
-- [Git](https://git-scm.com/downloads)
-- A Discord account
-- A Gemini API key
-
----
 
 ## 🔑 How to Get Your Tokens
 
@@ -150,12 +123,34 @@ The bot will quietly monitor your Discord messages and respond where appropriate
 
 ---
 
-## ⚖️ License
 
-This project is licensed under the **MIT License** — free for personal use and educational purposes.
+### Use Case: Level Up for Airdrops
+One of the common use cases for this bot is **leveling up in Discord servers**. Many **airdrops** or events require users to gain levels or activity in certain Discord servers. By using the **Mee6 bot** or similar bots that track activity, you can **automatically generate messages** and **interact in channels**, helping you level up faster without manual input.
+
+With the **Gemini AI-powered responses**, the bot can interact naturally in servers, completing tasks such as:
+- Participating in chat and events.
+- Responding to messages or mentions.
+- Completing simple tasks that would otherwise require manual input.
+
+This makes the **Discord Gemini Chat Bot** a powerful tool for automating your Discord experience and enhancing your **airdrops strategy** or **server activities**.
 
 ---
 
+
+## 🛠️ Tech Stack
+- **Python 3.8+**
+- **Discord.py (Self-Bot Mode)**
+- **Gemini AI (Google AI Studio API)**
+
+---
+
+## 📦 Prerequisites
+- [Python 3.8+](https://www.python.org/downloads/)
+- [Git](https://git-scm.com/downloads)
+- A Discord account
+- A Gemini API key
+
+---
 ## 👨‍💻 Author
 
 - **Nabil** – [GitHub: xNabil](https://github.com/xNabil)
