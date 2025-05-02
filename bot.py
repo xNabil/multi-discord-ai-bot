@@ -1,6 +1,6 @@
 # Discord Chat Bot by Nabil
 # GitHub: https://github.com/xNabil
-# Version: Enhanced with Priority Replies, Smart AI, Banned Words Handling, Probabilistic Response Lengths, Disfluencies, and Casual Language
+# Version: Enhanced with Priority Replies, Smart AI, Banned Words Handling, Probabilistic Response Lengths, Disfluencies, and Casual Professional Style
 
 import os
 import aiohttp
@@ -73,12 +73,14 @@ TOPICS = {
     'music': ['song', 'album', 'artist', 'band', 'concert', 'beats', 'tune'],
     'movies': ['film', 'movie', 'cinema', 'actor', 'director', 'scene', 'plot'],
     'tech': ['code', 'tech', 'software', 'hardware', 'gadget', 'app', 'update'],
-    'food': ['food', 'eat', 'cook', 'recipe', 'snack', 'meal', 'yummy']
+    'food': ['food', 'eat', 'cook', 'recipe', 'snack', 'meal', 'yummy'],
+    'anime': ['anime', 'manga', 'episode', 'series', 'character', 'aot', 'naruto', 'one piece']
 }
 
 # Regex patterns for user profiling
 FAVORITE_GAME_PATTERN = re.compile(r"my favorite game is (\w+)", re.IGNORECASE)
 FAVORITE_FOOD_PATTERN = re.compile(r"my favorite food is (\w+)", re.IGNORECASE)
+FAVORITE_ANIME_PATTERN = re.compile(r"my favorite anime is (\w+)", re.IGNORECASE)
 
 # Load personal info from myinfo.txt
 def load_personal_info():
@@ -194,7 +196,7 @@ def sanitize_message(message):
 async def rephrase_message(original_message, mood, sentiment, topic):
     """Rephrase a message to avoid banned words using Gemini AI."""
     try:
-        prompt = f"Rephrase this to avoid words like {', '.join(BANNED_WORDS)} while keeping the same vibe, mood ({mood}), sentiment ({sentiment}), and topic ({topic}):\n{original_message}"
+        prompt = f"Rephrase this to avoid words like {', '.join(BANNED_WORDS)} while keeping the same vibe, mood ({mood}), sentiment ({sentiment}), and topic ({topic}). Use plain text, no markdown:\n{original_message}"
         response = model.generate_content(
             prompt,
             generation_config=genai.types.GenerationConfig(
@@ -278,78 +280,81 @@ def detect_topic(text):
 
 # Profile extraction
 def extract_user_preferences(text):
-    """Extract preferences like favorite game or food from text."""
+    """Extract preferences like favorite game, food, or anime from text."""
     preferences = {}
     game_match = FAVORITE_GAME_PATTERN.search(text)
     if game_match:
         preferences['favorite_game'] = game_match.group(1)
     food_match = FAVORITE_FOOD_PATTERN.search(text)
     if food_match:
-        preferences['favorite_food'] = game_match.group(1)
+        preferences['favorite_food'] = food_match.group(1)
+    anime_match = FAVORITE_ANIME_PATTERN.search(text)
+    if anime_match:
+        preferences['favorite_anime'] = anime_match.group(1)
     return preferences
 
-# Extensive response templates
+# Response templates with casual professional style
 def get_random_question():
     """Return a random question to spark conversation."""
     questions = [
-        "whats your fave game rn?",
-        "anyone got a killer playlist to share?",
-        "whats the best movie youve seen lately?",
-        "yall into tech? whats your go-to gadget?",
-        "whats your comfort food? i need ideas",
-        "whos your dream collab artist?",
-        "whats the wildest thing youve done this month?",
-        "anybody got a meme to drop?",
-        "whats your vibe today? spill it",
-        "if you could live anywhere, whered it be?"
+        "what game are you into these days?",
+        "who’s making the best music right now?",
+        "seen any good movies lately?",
+        "what tech are you messing with these days?",
+        "what’s your favorite thing to eat?",
+        "what anime are you watching right now?",
+        "who’s an artist you’d love to collab with?",
+        "what’s the wildest thing you’ve done recently?",
+        "got something cool to share? drop it",
+        "how’s your day going, honestly?"
     ]
     return random.choice(questions)
 
 def get_random_message():
     """Return a random casual message."""
     messages = [
-        "just vibin, whats up?",
-        "this chats dope, keep it going",
-        "whos got the snacks? im starving",
-        "aspettative were all legends here",
-        "lowkey loving this server",
-        "lets make some chaos, fam",
-        "im here for the vibes, no cap",
-        "whos got the tea today?",
-        "this place is my vibe rn",
-        "lets turn it up a notch"
+        "just chilling, what’s up?",
+        "this place is lively, huh?",
+        "anyone craving a snack right now?",
+        "we’re keeping it real in here",
+        "this server’s got some energy",
+        "let’s mix things up, you in?",
+        "just here for the good chats",
+        "what’s the latest thing going on?",
+        "this group’s pretty solid",
+        "ready to make things interesting?"
     ]
     return random.choice(messages)
 
 def get_greeting():
     """Return a casual greeting."""
     greetings = [
-        "yo whats good?",
-        "sup fam, hows it hangin?",
-        "hey legends, whats poppin?",
-        "whats up, my people?",
-        "yo, whos ready to chat?",
-        "hey, lets get this vibe going",
-        "sup, hows the crew?",
-        "whats crackin, squad?",
-        "yo, lets make it lit",
-        "hey, fams here, lets roll"
+        "hey, what’s up?",
+        "yo, how’s the crew doing?",
+        "what’s good, everyone?",
+        "who’s running things around here?",
+        "ready to jump in or what?",
+        "what’s the vibe today?",
+        "sup, how’s it going?",
+        "is this the place to be?",
+        "let’s get things rolling",
+        "hey, good to see you all"
     ]
     return random.choice(greetings)
 
 def get_farewell():
     """Return a casual farewell."""
     farewells = [
-        "catch yall later",
-        "peace out, squad",
-        "im out, stay cool",
-        "gtg, vibes forever",
-        "later, homies",
-        "time to dip, peace",
-        "im outtie, but ill be back",
-        "see ya on the flip side",
-        "outtie, keep it real",
-        "peace and love, fam"
+        "alright, I’m out, see you",
+        "catch you later, stay cool",
+        "gotta go, keep it real",
+        "I’m off, take care",
+        "see you around, folks",
+        "heading out, later",
+        "alright, I’m done, peace",
+        "back soon, hold it down",
+        "time to dip, stay good",
+        "later, everyone, be easy"
     ]
     return random.choice(farewells)
 
@@ -357,18 +362,18 @@ def get_farewell():
 def generate_human_prompt(prompt, message_type, mood, user_profile, sentiment, topic):
     """Generate a prompt for Gemini AI that ensures human-like responses with probabilistic styling, response length, and disfluencies."""
     # Probabilistic response length instructions
-    single_word_reply = random.random() < 0.30  # 30% chance for single word reply
-    short_reply = random.random() < 0.69 if not single_word_reply else False  # 69% chance for short reply (1-2 lines)
-    long_reply = not single_word_reply and not short_reply  # 1% chance for long reply (up to 3 lines)
+    single_word_reply = random.random() < 0.10  # 10% chance for single word reply
+    short_reply = random.random() < 0.80 if not single_word_reply else False  # 75% chance for short reply (1-2 lines)
+    long_reply = not single_word_reply and not short_reply  # 15% chance for long reply (up to 3 lines)
 
     if single_word_reply:
         length_instruction = "Respond with a single word, super casual."
         max_tokens = 10
     elif short_reply:
-        length_instruction = "Keep it short (1-2 lines) with a casual vibe."
+        length_instruction = "Keep it short (1-2 lines) with a relaxed vibe."
         max_tokens = 50
     else:  # long_reply
-        length_instruction = "Write a longer response (up to 3 lines) with some detail."
+        length_instruction = "Write a longer response (up to 3 lines) with some personality."
         max_tokens = 100
 
     # Probabilistic stylistic instructions
@@ -378,124 +383,129 @@ def generate_human_prompt(prompt, message_type, mood, user_profile, sentiment, t
     use_disfluencies = random.random() < 0.20  # chance to include disfluencies and fillers
 
     punctuation_instruction = (
-        "Avoid periods at the end of sentences (use commas, ellipses (…), or no punctuation instead) unless randomly chosen (20% chance for periods)."
-        if avoid_periods else "Use minimal punctuation, like a casual texter would."
+        "Skip periods at the end (use commas or nothing) unless it feels right (20% chance for periods)."
+        if avoid_periods else "Use light punctuation, like you’re typing fast."
     )
     commas_instruction = (
-        "Occasionally use multiple commas in a row (e.g., 'yeah, sure,,, i got you')."
+        "Add extra commas sometimes (like 'hey, sure,, sounds good')."
         if use_multiple_commas else ""
     )
     correction_instruction = (
-        "Occasionally correct yourself with phrases like 'scratch that' or 'i mean' in a natural way."
+        "Correct yourself sometimes with phrases like 'wait, I mean' or 'my bad' smoothly."
         if use_self_correction else ""
     )
 
     # Disfluencies and fillers instruction
     disfluency_types = [
-        ("Hesitation", ["umm", "hmm", "Eh", "well..."]),
-        ("Casual Leads", ["you know", "like", "sooo", "anyway…"]),
-        ("Backtracking", ["wait, no", "scratch that", "actually..."]),
-        ("Overuse of Conjunctions", ["and like", "but then", "so yeah…"]),
-        ("Incomplete Thoughts", ["idk", "kinda like…", "i guess…"]),
-        ("Self Talk", ["lemme think…", "not sure tbh", "i mean..."]),
-        ("Spaced Out", ["uhhh what was i saying", "where was i..."]),
-        ("Confirming", ["right?", "you feel me?", "that’s fair, no?"])
+        ("Hesitation", ["uh", "well", "you know"]),
+        ("Casual Leads", ["so, like", "honestly", "basically"]),
+        ("Backtracking", ["wait, I mean", "my bad", "hold on"]),
+        ("Overuse of Conjunctions", ["and, uh", "but like", "so, yeah"]),
+        ("Incomplete Thoughts", ["not sure", "kinda", "maybe"]),
+        ("Self Talk", ["let’s see", "I guess", "thinking"]),
+        ("Spaced Out", ["what was I saying", "got distracted"]),
+        ("Confirming", ["right?", "you follow?", "cool?"])
     ]
     selected_disfluencies = []
     if use_disfluencies:
-        # Select 1-2 disfluency types for short/long replies, or 1 for single word
         num_disfluencies = 1 if single_word_reply else random.randint(1, 2)
         selected_disfluencies = random.sample(disfluency_types, num_disfluencies)
         disfluency_instruction = (
-            f"Include natural disfluencies and fillers of these types: {', '.join([t[0] for t in selected_disfluencies])}. "
+            f"Use some natural disfluencies and fillers like: {', '.join([t[0] for t in selected_disfluencies])}. "
             f"Examples: {', '.join([f'{t[0]}: {e}' for t in selected_disfluencies for e in t[1]])}. "
-            f"Use them sparingly to sound natural, especially for single word replies."
+            f"Keep it light to sound natural, especially for single word replies."
         )
     else:
-        disfluency_instruction = "Use minimal disfluencies, only if natural for the mood."
+        disfluency_instruction = "Use disfluencies only if they fit the vibe."
 
     human_instructions = f"""
-You are a human and mimic a casual human texting on Discord. When replying, make your response sound natural and laid-back, like a regular person typing fast. Include the following elements:
+You’re a human acting like a relaxed, witty user who’s friendly but keeps it professional. Make your replies casual, engaging, and clean, like you’re chatting with coworkers on Discord. Here’s the deal:
 
 - {disfluency_instruction}
 - {correction_instruction}
-- Use super casual language: write 'im' instead of 'i’m', 'dont' instead of 'don’t', 'whats' instead of 'what’s', 'nobody is' instead of 'nobody’s', etc. Avoid formal contractions.
-- Prefer lowercase for everything except one random capital letter at the start of a word (not mid-word) in the reply.
-- Vary your sentence lengths: mix 1-3 short sentences with 1-2 longer ones (for long responses only).
+- Use casual language: ‘I’m’ not ‘I am’, ‘what’s’ not ‘what is’, ‘gonna’ not ‘going to’. Avoid heavy slang or urban phrases.
+- All lowercase, no random capitalization, keep it simple.
+- Mix short sentences (1-3) with a couple longer ones (for long replies only).
 - {commas_instruction}
-- Introduce a stray typo or two, but ensure it doesn't break any code or make the response unreadable.
-- Sparingly use a single emoji at the end of some responses, like 😎 or 😅.
-- Avoid sounding robotic or formal; prioritize a chill, imperfect vibe like a Discord user.
+- Add a minor typo or two, but keep it readable, no code-breaking.
+- Use a single emoji sometimes at the end, like 😎 or 😄.
+- Stay friendly, witty, never robotic; think relaxed Discord energy.
 - {punctuation_instruction}
-- Avoid using words like: {', '.join(BANNED_WORDS)}
+- Use plain text only, no markdown (no **, *, _, etc.).
+- Don’t use words like: {', '.join(BANNED_WORDS)}
+- Always use personal info from myinfo.txt to inform responses, especially for questions about preferences (e.g., favorite anime, game, food). If the question mentions a specific preference (e.g., 'is aot your fav anime'), check myinfo.txt for 'Favorite Anime' and respond accordingly. If no relevant info exists, say you don’t have a preference but suggest something related.
 """
 
-    # New MODES dictionary with only specified moods
+    # MODES dictionary with casual professional style
     MODES = {
         'excited': [
-            "sound super hyped!! use exclamation points, emojis like 🤩🎉, and say things like 'lets gooo!'",
-            "everything is amazing, wow-worthy, and full of energy"
+            "sound pumped, use exclamations, emojis like 🤩🎉, say things like ‘that’s awesome!’",
+            "act like it’s a big deal, high energy, but keep it clean"
         ],
         'chill': [
-            "talk like youre vibin on discord, say 'lol', 'you know', 'hmm' casually",
-            "use relaxed grammar and emojis like 😌, 😎, 😅, short replies or lazy sentences"
+            "stay relaxed, say ‘cool’, ‘nice’, ‘hey’ like you’re just hanging out",
+            "use simple grammar and emojis like 😌, 😎, 😄, keep it short"
         ],
         'sarcastic': [
-            "use a dry tone, rhetorical questions, and eye-roll emojis 🙄, 😏",
-            "pretend youre unimpressed or joking, throw in 'yeah right', 'sureeee', etc"
+            "use a sharp tone, emojis like 🙄, 😏, say ‘oh, really?’ or ‘sure thing’",
+            "act skeptical, throw light shade, but stay friendly"
         ],
         'joking': [
-            "react playfully, use 'lmao', '💀', 'bruh', etc",
-            "act unserious, like youre goofing off with friends"
+            "be playful, say ‘you’re kidding’, ‘haha, nice’, use 😂, 🤣, 😝",
+            "keep it fun like_HISTORY you’re teasing a friend"
         ],
         'lazy': [
-            "act like you just woke up, use minimal effort, type slowww, trail off mid-sentence...",
-            "lowercase everything, barely punctuate, maybe an emoji like 😴 or 💤"
+            "type like you’re tired, slow vibes, say ‘eh, not sure’ or ‘too much work’",
+            "all lowercase, low effort, maybe 😴 or 💤"
         ],
         'paranoid': [
-            "be a little sketchy, say 'not sure if i should say this here…', 'you didnt hear it from me 👀'",
-            "use 🫣, 🤐, or 👀 and act like youre always watching"
+            "act cautious, say ‘is this for real?’ or ‘better watch out’, use 👀, 😬",
+            "sound like you’re double-checking everything"
         ]
     }
 
     # Message type templates
     templates = {
         'reply': [
-            'keep it flowing like a gen z reply, casual af, one capital at word start',
-            'chat back like youre texting your squad, no formal bs, one capital at word start',
-            'respond like a discord regular, chill and quick, one capital at word start',
-            'hit back like its a convo, no stiff stuff, one capital at word start'
+            'respond like a relaxed user, friendly and witty, plain text',
+            'chat like you’re in a group convo, no heavy slang, plain text',
+            'answer like you’re keeping the vibe going, short and sharp, plain text',
+            'hit back like it’s a casual talk, keep it engaging, plain text'
         ],
         'question': [
-            'answer like a gen z explainer, simple af, one capital at word start',
-            'drop a quick answer, teen style, no big words, one capital at word start',
-            'help out like a discord homie, real talk, one capital at word start',
-            'clear it up like youre chatting, easy vibes, one capital at word start'
+            'answer like you’re explaining to a friend, simple and clear, plain text',
+            'drop a quick response, casual style, no fancy words, plain text',
+            'break it down like you’re chatting, keep it real, plain text',
+            'clear it up like you’re helping out, no fluff, plain text'
         ],
         'random': [
-            'say something chill like a gen z, random af, one capital at word start',
-            'drop a vibe like youre texting your crew, no deep stuff, one capital at word start',
-            'chat like a discord wildcard, spontaneous af, one capital at word start',
-            'toss out something wild, no plan, one capital at word start'
+            'say something fun like a chill user, random but clean, plain text',
+            'drop a casual comment like you’re texting friends, plain text',
+            'talk like you’re sparking a convo, spontaneous and witty, plain text',
+            'throw out something light, no script, plain text'
         ],
         'greeting': [
-            'greet like a gen z legend, super chill, one capital at word start',
-            'say hi like youre hittin up your squad, no formal vibes, one capital at word start',
-            'welcome like a discord pro, quick and cool, one capital at word start',
-            'roll in like you own the place, laid back, one capital at word start'
+            'greet like a friendly user, welcoming and clean, plain text',
+            'say hi like you’re joining a group, no weak vibes, plain text',
+            'welcome like you’re happy to be here, quick and cool, plain text',
+            'jump in like you’re part of the crew, keep it light, plain text'
         ],
         'farewell': [
-            'say bye like a gen z, casual af, one capital at word start',
-            'peace out like youre dippin from your homies, chill, one capital at word start',
-            'leave like a discord ghost, smooth exit, one capital at word start',
-            'bounce like its no biggie, catch ya later, one capital at word start'
+            'leave like a chill user, casual and friendly, plain text',
+            'dip out like you’re saying bye to friends, smooth exit, plain text',
+            'sign off like it’s no big deal, stay cool, plain text',
+            'head out like you’ll be back, keep it easy, plain text'
         ]
     }
 
     # Personal context (always included)
-    personal_context = f"use this if it fits: name: {PERSONAL_INFO.get('Name', 'unknown')}, " \
+    personal_context = f"Use this personal info from myinfo.txt to inform your response, especially for preference questions: " \
+                      f"name: {PERSONAL_INFO.get('Name', 'unknown')}, " \
                       f"hobby: {PERSONAL_INFO.get('Hobby', 'none')}, " \
                       f"location: {PERSONAL_INFO.get('Where I live', 'somewhere')}, " \
+                      f"favorite anime: {PERSONAL_INFO.get('Favorite Anime', 'none')}, " \
+                      f"favorite game: {PERSONAL_INFO.get('Favorite Game', 'none')}, " \
+                      f"favorite food: {PERSONAL_INFO.get('Favorite Food', 'none')}, " \
                       f"bio: {PERSONAL_INFO.get('Bio', 'just a chill bot')}"
 
     # Memory context
@@ -509,7 +519,9 @@ You are a human and mimic a casual human texting on Discord. When replying, make
         if topic == 'gaming' and 'favorite_game' in user_profile:
             user_context += f"they like {user_profile['favorite_game']} "
         if topic == 'food' and 'favorite_food' in user_profile:
-            user_context += f"their fave food is {user_profile['favorite_food']} "
+            user_context += f"they’re into {user_profile['favorite_food']} "
+        if topic == 'anime' and 'favorite_anime' in user_profile:
+            user_context += f"they’re into {user_profile['favorite_anime']} "
 
     # Construct full prompt
     template = random.choice(templates.get(message_type, MODES[mood]))
@@ -518,7 +530,7 @@ You are a human and mimic a casual human texting on Discord. When replying, make
                    f"reply in english. mood is {mood}. sentiment is {sentiment}. topic is {topic}. {mode_instruction}\n" +
                    f"{length_instruction}\n" +
                    f"{personal_context}\n{memory_context}\n{user_context}\n" +
-                   f"no usernames. simple words.\n\n{prompt}")
+                   f"no usernames. simple words. plain text, no markdown.\n\n{prompt}")
 
     return full_prompt, max_tokens
 
@@ -527,7 +539,7 @@ async def get_gemini_response(prompt, message_type='reply', mood='chill', user_p
     """Generate a smart, context-aware response using Gemini AI."""
     try:
         if not ai_rate_limiter.can_make_request():
-            return "chill, im hittin the rate limit rn"
+            return "hey, I’m maxed out on calls right now"
 
         # Generate human-like prompt with response length
         full_prompt, max_tokens = generate_human_prompt(prompt, message_type, mood, user_profile, sentiment, topic)
@@ -542,10 +554,14 @@ async def get_gemini_response(prompt, message_type='reply', mood='chill', user_p
             )
         )
         response_text = response.text.strip()
-        return response_text if response_text else "uh, gimme a sec, brains fried"
+
+        # Strip any markdown characters
+        response_text = re.sub(r'[\*\_\~\`\#]+', '', response_text)
+
+        return response_text if response_text else "uh, my brain’s blank, give me a sec"
     except Exception as e:
         print(f"{Fore.RED}AI generation error: {e}{Style.RESET_ALL}")
-        return "oops, something crashed, my bad"
+        return "oops, something broke, my bad"
 
 # Typing simulation and Discord API utilities
 async def trigger_typing(channel_id):
@@ -590,7 +606,7 @@ async def make_discord_request(url, method="GET", json_data=None):
                     return None  # Skip the message
                 if response.content_type != 'application/json':
                     content = await response.text()
-                    print(f"{Fore.RED}Unexpected response type: {response.content_type}, content: {content[:100]}{Style.RESET_ALL}")
+                    print(f"{Fore.RED}Unknown response type: {response.content_type}, content: {content[:100]}{Style.RESET_ALL}")
                     raise ValueError(f"Expected JSON, got {response.content_type}")
                 response.raise_for_status()
                 return await response.json()
@@ -701,11 +717,11 @@ async def print_countdown(seconds, message="Waiting"):
 async def selfbot():
     global BOT_USER_ID
     print_header()
-    print_status("Initializing bot...", 'info')
+    print_status("Getting bot ready...", 'info')
 
     # Validate token
     if not await validate_token():
-        print_status("Invalid DISCORD_TOKEN, exiting...", 'error')
+        print_status("DISCORD_TOKEN is invalid, shutting down...", 'error')
         return
 
     # Load memory and profiles
@@ -715,12 +731,12 @@ async def selfbot():
     # Get bot user ID
     BOT_USER_ID = await get_bot_user_id()
     if not BOT_USER_ID:
-        print_status("Failed to get bot ID, check DISCORD_TOKEN", 'error')
+        print_status("Can’t grab bot ID, check DISCORD_TOKEN", 'error')
         return
 
     channel_id = CHANNEL_ID
     if not channel_id or not channel_id.isdigit():
-        print_status("Invalid CHANNEL_ID", 'warning')
+        print_status("CHANNEL_ID is invalid", 'warning')
         channel_id = input(f"{Fore.CYAN}Enter channel ID: {Style.RESET_ALL}").strip()
         if not channel_id.isdigit():
             print_status("Channel ID must be numeric", 'error')
@@ -734,22 +750,22 @@ async def selfbot():
             CHANNEL_SLOW_MODES[channel_id] = (min_delay, max_delay)
         except:
             CHANNEL_SLOW_MODES[channel_id] = default_slow_mode
-            print_status("Invalid SLOW_MODE, using default 5-10s", 'warning')
+            print_status("SLOW_MODE invalid, using 5-10s default", 'warning')
     else:
         CHANNEL_SLOW_MODES[channel_id] = default_slow_mode
-        print_status("SLOW_MODE not set, using default 5-10s", 'warning')
+        print_status("No SLOW_MODE set, using 5-10s", 'warning')
 
-    print_status(f"Bot running on channel {channel_id} with slow mode {CHANNEL_SLOW_MODES[channel_id]}s", 'success')
+    print_status(f"Bot’s live on channel {channel_id} with slow mode {CHANNEL_SLOW_MODES[channel_id]}s", 'success')
 
     while True:
         try:
             wait_time = random.uniform(*CHANNEL_SLOW_MODES[channel_id])
-            await print_countdown(wait_time, "Monitoring for")
+            await print_countdown(wait_time, "Checking for")
 
             # Fetch messages
             messages = await fetch_channel_messages(channel_id, 50)
             if not messages:
-                print_status("No messages fetched, retrying...", 'warning')
+                print_status("No messages found, trying again...", 'warning')
                 continue
 
             # Update user profiles
@@ -775,7 +791,7 @@ async def selfbot():
             # Check for inactivity and initiate conversation
             last_message_time = max([isoparse(msg['timestamp']).timestamp() for msg in messages])
             if time.time() - last_message_time > 300 and random.random() < 0.2:
-                print_status("Chat’s been quiet, starting a convo...", 'info')
+                print_status("Chat’s quiet, starting something...", 'info')
                 context = get_random_question() if random.random() < 0.5 else get_random_message()
                 response = await get_gemini_response(context, 'random', 'chill')
                 await send_reply(channel_id, response, (0, 2))
@@ -788,7 +804,7 @@ async def selfbot():
             elif other_messages:
                 target_message = random.choice(other_messages)
             else:
-                print_status("No valid messages to reply to", 'info')
+                print_status("Nothing to respond to", 'info')
                 continue
 
             # Analyze message
@@ -799,18 +815,18 @@ async def selfbot():
 
             # Generate response
             context = f"they said: {target_message['content']}"
-            prompt = f"youre a chill discord user replying to this:\n{context}"
+            prompt = f"you’re a witty discord user responding to this:\n{context}"
             response = await get_gemini_response(prompt, 'reply', mood, user_profile, sentiment, topic)
 
             # Display in terminal
-            print_status(f"Responding to {Fore.BLUE}{target_message['author']['username']}{Style.RESET_ALL}: {Fore.YELLOW}{target_message['content']}{Style.RESET_ALL}", 'info')
+            print_status(f"Replying to {Fore.BLUE}{target_message['author']['username']}{Style.RESET_ALL}: {Fore.YELLOW}{target_message['content']}{Style.RESET_ALL}", 'info')
 
             # Send response with typing simulation
             await send_reply(channel_id, response, (0, 2), target_message.get("id"))
             add_to_memory(target_message['id'], target_message['author']['username'], target_message['content'], response)
 
         except Exception as e:
-            print_status(f"Error in main loop: {e}", 'error')
+            print_status(f"Main loop error: {e}", 'error')
             await asyncio.sleep(5)
 
 if __name__ == "__main__":
