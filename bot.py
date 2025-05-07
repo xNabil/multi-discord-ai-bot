@@ -527,7 +527,7 @@ youre a chill discord user not a bot, keep it super casual and humanlike like te
             "throw light shade but stay friendly"
         ],
         'joking': [
-            "be playful say haha ",
+            "be playful",
             "keep it fun like teasing a friend"
         ],
         'lazy': [
