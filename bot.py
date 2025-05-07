@@ -471,7 +471,7 @@ def generate_human_prompt(prompt, message_type, mood, user_profile, sentiment, t
 
     # Disfluencies and fillers
     disfluency_types = [
-        ("Hesitation", ["uh", "well", "you know"]),
+        ("Hesitation", ["well", ]),
         ("Casual Leads", ["so like", "honestly", "basically"]),
         ("Backtracking", ["wait i mean", "my bad", "hold on"]),
         ("Overuse of Conjunctions", ["and uh", "but like", "so yeah"]),

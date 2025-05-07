@@ -10,6 +10,7 @@ A simple Discord self-bot that uses **Gemini AI** to automatically reply, handle
 ⚡ _Ideal for automating Discord interactions, creating a self-bot for fun, or using it for specific tasks like leveling up in servers for **airdrops** or participating in events that require activity on platforms like **Mee6 bot**._
 
 ## 🚀 Features
+<<<<<<< HEAD
 - **AI-Driven Responses**: Leverages Gemini AI for natural, context-aware, human-like replies.
 - **Reply & Mention Priority**: Prioritizes responses to direct mentions and replies for engaging interactions.
 - **Multi-Language Support**: Supports English, Hindi, Spanish, French, and German natively.
@@ -45,6 +46,20 @@ A simple Discord self-bot that uses **Gemini AI** to automatically reply, handle
    SLOW_MODE=60,65
    ```
 ## 🔑 How to Get Your Tokens for the `.env`
+=======
+- **AI-Driven Responses**: Converses using Gemini AI with natural, context-aware replies.
+- **Reply & Mention Priority**: Instantly responds to direct mentions and replies.
+- **Multi-Language Support**: English, Hindi, Spanish, French, and German out of the box.
+- **Conversation Memory**: Maintains up to 50 past interactions for smarter conversations.
+- **Customizable Slow Mode**: Control message scanning intervals via `.env` (`60`, `65`, etc.).
+- **Mood Variations**: Randomized tones — excited, chill, sarcastic — with emojis.
+- **Personalization**: Integrates details from `myinfo.txt` to craft customized responses.
+- **Rate Limiting Handling**: Smart retry system for Discord and Gemini API limits.
+
+---
+
+## 🔑 How to Get Your Tokens
+>>>>>>> 0e359f5b03da66dcce1e418f8df071e55704fe00
 
 ### How to Get a Gemini API Key
 1. Go to [Google AI Studio](https://aistudio.google.com/).
@@ -93,10 +108,17 @@ A simple Discord self-bot that uses **Gemini AI** to automatically reply, handle
      ).exports.default.getToken()
      ```  
    - The console will print your **Discord user token**.  
+<<<<<<< HEAD
 6. Copy and **keep it secure** — never share it publicly.Copy paste it into your `.env` file or wherever you need it in your bot configuration.
 
 ---
  🔑 How to Get Your Discord Channel ID
+=======
+6. Copy and **keep it secure** — never share it publicly.
+
+---
+## 🔑 How to Get Your Discord Channel ID
+>>>>>>> 0e359f5b03da66dcce1e418f8df071e55704fe00
 
 To get the **Channel ID**, follow these steps:
 you can get the Channel ID directly from the URL of the channel:
@@ -109,7 +131,32 @@ you can get the Channel ID directly from the URL of the channel:
 Copy the **Channel ID** and paste it into your `.env` file or wherever you need it in your bot configuration.
 
 
+<<<<<<< HEAD
 ### **4.(Optional) Customize Personal Info**
+=======
+## 🧰 Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/xNabil/discord-ai-bot.git
+   cd discord-ai-bot
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Setup the `.env` File**
+   Create a file named `.env` in the root directory and add:
+   ```env
+   DISCORD_TOKEN=your_discord_user_token
+   GEMINI_API_KEY=your_gemini_api_key
+   SLOW_MODE=60,65
+   ```
+
+4. **(Optional) Customize Personal Info**
+>>>>>>> 0e359f5b03da66dcce1e418f8df071e55704fe00
    Edit `myinfo.txt` to add your personal data (e.g., name, hobbies, favorite phrases) for more personalized replies.
 
 ---
