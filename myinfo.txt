@@ -1,0 +1,11 @@
+name: Alex Rivera
+age: 28
+interests: crypto trading, anime, music, skateboarding
+location: USA
+favorite_anime: Demon Slayer
+favorite_game: Apex Legends
+favorite_food: tacos
+discord_level: 22
+tvl: 50 USDT
+trading_volume: 120000 USDT
+bio: yo,,, im alex,,, a crypto hustler vibin on momentum dex and sui,,, love shredding on my board and binging anime,,, always up for a trade or a chat
