@@ -623,7 +623,7 @@ async def get_gemini_response(prompt, message_type='reply', mood='chill', user_p
     """Generate a smart, context-aware response using Gemini AI."""
     try:
         if not ai_rate_limiter.can_make_request():
-            return "yo im maxed out rn give me a sec"
+            return None  # Silently skip if rate limited
 
         # Generate human-like prompt
         full_prompt, max_tokens = generate_human_prompt(prompt, message_type, mood, user_profile, sentiment, topic)
@@ -655,10 +655,10 @@ async def get_gemini_response(prompt, message_type='reply', mood='chill', user_p
         # Add emojis sparingly
         response_text += get_random_emojis(1, mood)
 
-        return response_text if response_text else "uh my brains blank give me a sec"
+        return response_text if response_text else None  # Skip if response is empty
     except Exception as e:
         print(f"{Fore.RED}AI generation error: {e}{Style.RESET_ALL}")
-        return "oops something broke my bad"
+        return None  # Silently skip on any AI error
 
 # Typing simulation and Discord API utilities
 async def trigger_typing(channel_id):
