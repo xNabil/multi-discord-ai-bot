@@ -25,8 +25,8 @@ A multi-account Discord chat bot powered by Google Gemini AI, designed to engage
 
 **1.Clone the Repository**
    ```bash
-   git clone https://github.com/xNabil/discord-ai-bot.git
-   cd discord-ai-bot
+   git clone https://github.com/xNabil/multi-discord-ai-bot.git
+   cd multi-discord-ai-bot
    ```
 
 **2.Install Dependencies**
